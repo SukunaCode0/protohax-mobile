@@ -8,11 +8,19 @@ jobs:
         with: { submodules: recursive }
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 17 }
-      - uses: android-actions/setup-android@v3
-      - run: yes | sdkmanager "platforms;android-34" "build-tools;34.0.0" || true
+      - name: Android SDK info
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
+          sdkmanager --list_installed || true
+      - name: Accept licenses + install NDK/CMake
+        run: |
+          yes | sdkmanager --licenses || true
+          sdkmanager "platforms;android-34" "build-tools;34.0.0" "ndk;27.0.12077973" "cmake;3.22.1"
       - uses: gradle/actions/setup-gradle@v3
         with: { gradle-version: 8.7 }
-      - run: gradle :app:assembleDebug --stacktrace
+      - name: Build debug APK
+        run: gradle :app:assembleDebug --stacktrace
       - uses: actions/upload-artifact@v4
         with: { name: ProtohaxMobile-debug, path: app/build/outputs/apk/debug/*.apk }
 # RENAME on GitHub: github-workflows/build-apk.txt -> .github/workflows/build-apk.yml
