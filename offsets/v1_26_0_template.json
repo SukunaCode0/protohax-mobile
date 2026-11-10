@@ -1,0 +1,16 @@
+{
+  "mcVersion": "1.26.0",
+  "notes": "Fill after dumping libminecraftpe.so for this exact build. Unknown keys = module stays disabled.",
+  "signatures": {
+    "ClientInstance_tick": "?? pattern arm64 ??",
+    "Actor_move": "?? pattern ??",
+    "Level_getEntities": "?? pattern ??",
+    "Gamma_set": "?? pattern ??"
+  },
+  "offsets": {
+    "ClientInstance_tick": 0,
+    "Actor_move": 0,
+    "Level_getEntities": 0,
+    "Gamma_set": 0
+  }
+}
