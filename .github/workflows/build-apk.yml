@@ -1,0 +1,26 @@
+name: build-apk
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: android-actions/setup-android@v3
+      - name: Accept licenses
+        run: yes | sdkmanager --licenses || true
+      - name: Install NDK + CMake
+        run: sdkmanager "ndk;27.0.12077973" "cmake;3.22.1" "platforms;android-34" "build-tools;34.0.0"
+      - name: Build debug APK
+        run: |
+          export ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/27.0.12077973
+          ./gradlew :app:assembleDebug --stacktrace
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ProtohaxMobile-debug
+          path: app/build/outputs/apk/debug/*.apk
+# NOTE: in this editor this file lives at github-workflows/build-apk.yml
+# On GitHub, move it to .github/workflows/build-apk.yml
