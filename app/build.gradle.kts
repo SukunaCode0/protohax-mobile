@@ -13,6 +13,10 @@ android {
     ndk { abiFilters += setOf("arm64-v8a", "armeabi-v7a") }
   }
   buildFeatures { buildConfig = true; compose = true }
+  packaging {
+    resources.excludes += setOf("DebugProbesKt.bin", "META-INF/DEPENDENCIES")
+    resources.pickFirsts += setOf("META-INF/INDEX.LIST", "META-INF/io.netty.versions.properties")
+  }
   buildTypes {
     debug { isMinifyEnabled = false }
     release { isMinifyEnabled = true; proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro") }
