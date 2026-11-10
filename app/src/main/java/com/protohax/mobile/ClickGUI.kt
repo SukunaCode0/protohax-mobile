@@ -34,7 +34,7 @@ fun ClickGUIScreen(mods: List<Module>) {
             Column(Modifier.padding(12.dp)) {
               Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
                 Text(m.name, color = Color.White)
-                Switch(m.isEnabled, { m.setEnabled(it) })
+                Switch(m.isEnabled, { m.setToggled(it) })
               }
               m.values.forEach { v ->
                 when (v) {
