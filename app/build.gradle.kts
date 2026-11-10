@@ -22,6 +22,7 @@ android {
 kotlin { compilerOptions { jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17) } }
 dependencies {
   implementation(project(":relay"))
+  implementation(libs.bedrock.connection) { exclude(group = "com.nukkitx", module = "natives") }
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.3")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
