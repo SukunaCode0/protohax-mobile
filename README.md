@@ -17,8 +17,8 @@ Horion PC injects a DLL into the game. Android MITM does not touch game memory:
 - `relay/` — own relay facade on CloudBurst `bedrock-connection`
 - `app/` — `GameSession`, `Module` system, 21 packet modules, overlay `MenuService`, Compose `ClickGUIScreen` (PC-vibe left rail + search + toggles + ArrayList)
 - `docs/MITM.md` — architecture note
-- `github-workflows/build-apk.txt` — RENAME to `.github/workflows/build-apk.yml` on GitHub
-- `gitmodules.txt` — RENAME to `.gitmodules` on GitHub (pulls `mccheatz/mcpedata` mappings)
+- `github-workflows/build-apk.txt` — RENAME to `.github/workflows/build-apk.yml` on GitHub (dots aren't allowed in this editor's `src/`)
+- `relay/mcpedata/` — drop per-version block/item mapping tables here (source: mccheatz/mcpedata)
 
 ## GitHub setup
 
