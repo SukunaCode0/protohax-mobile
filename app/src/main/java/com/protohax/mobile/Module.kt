@@ -30,7 +30,7 @@ abstract class Module(val name: String, val category: ModuleCategory, defaultEna
   var isEnabled by mutableStateOf(defaultEnabled); private set
   var isExpanded by mutableStateOf(false)
   val values = mutableListOf<Value<*>>()
-  fun setEnabled(v: Boolean) { isEnabled = v; if (v) onEnabled() else onDisabled() }
+  fun setToggled(v: Boolean) { isEnabled = v; if (v) onEnabled() else onDisabled() }
   open fun onEnabled() { if (isSessionCreated) session.displayClientMessage("§b[Protohax] §7" + name + " §8» " + (if (isEnabled) "§aon" else "§coff")) }
   open fun onDisabled() { if (isSessionCreated) session.displayClientMessage("§b[Protohax] §7" + name + " §8» §coff") }
   open fun beforeServerBound(p: InterceptablePacket): Boolean = false
