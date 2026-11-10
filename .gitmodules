@@ -1,0 +1,4 @@
+# rename to .gitmodules on GitHub
+[submodule "relay/mcpedata"]
+  path = relay/mcpedata
+  url = https://github.com/mccheatz/mcpedata.git
